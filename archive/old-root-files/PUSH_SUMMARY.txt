@@ -1,0 +1,191 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 GITHUB PUSH - 3 WAYS (วิธีที่ใช้ได้)                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📍 LOCATION: /home/user/mcp-servers/bl1nk-skill-mcp-server
+
+════════════════════════════════════════════════════════════════════════════
+🥇 METHOD 1: INTERACTIVE SCRIPT (ง่ายที่สุด - แนะนำ)
+════════════════════════════════════════════════════════════════════════════
+
+วิธี:
+  cd /home/user/mcp-servers/bl1nk-skill-mcp-server
+  ./scripts/github-push-interactive.sh
+
+ขั้นตอน:
+  1. Script ถามขอ GitHub token
+  2. Paste token (จาก https://github.com/settings/tokens)
+  3. Script จะ push โดยอัตโนมัติ
+  4. ดูผล ✅
+
+ข้อดี:
+  ✅ ไม่ต้องจำคำสั่ง
+  ✅ Script บอกสถานะชัดเจน
+  ✅ สะดวกสำหรับครั้งแรก
+
+════════════════════════════════════════════════════════════════════════════
+🥈 METHOD 2: MANUAL GIT PUSH
+════════════════════════════════════════════════════════════════════════════
+
+วิธี:
+  cd /home/user/mcp-servers/bl1nk-skill-mcp-server
+  git config credential.helper store
+  git push origin main
+
+ขั้นตอน:
+  1. Enable credential storage
+  2. Run push command
+  3. Git ถาม username: billlzzz10
+  4. Git ถาม password: <PASTE_TOKEN>
+  5. Done ✅
+
+ข้อดี:
+  ✅ ใช้ git โดยตรง (standard)
+  ✅ Credential เก็บไว้ใช้ซ้ำได้
+
+════════════════════════════════════════════════════════════════════════════
+🥉 METHOD 3: ONE-LINER PUSH URL
+════════════════════════════════════════════════════════════════════════════
+
+วิธี:
+  cd /home/user/mcp-servers/bl1nk-skill-mcp-server
+  git push https://billlzzz10:YOUR_TOKEN@github.com/billlzzz10/bl1nk-skill-mcp-server.git main
+
+ขั้นตอน:
+  1. Replace YOUR_TOKEN with actual token
+  2. Run command
+  3. Done ✅
+
+ข้อดี:
+  ✅ ทำได้ในคำสั่งเดียว
+  ✅ ไม่ต้อง enable credential
+
+⚠️  ข้อระวัง:
+  • Token จะ visible ใน command history
+  • ใช้ใน secure environment เท่านั้น
+
+════════════════════════════════════════════════════════════════════════════
+🔑 HOW TO GET GITHUB TOKEN
+════════════════════════════════════════════════════════════════════════════
+
+1. ไปที่: https://github.com/settings/tokens
+2. Click "Generate new token (classic)"
+3. ตั้ง:
+   - Name: bl1nk-push
+   - Scopes: repo, read:org
+4. Click "Generate token"
+5. Copy immediately (แสดงแค่ครั้งเดียว!)
+
+════════════════════════════════════════════════════════════════════════════
+✅ WHAT WILL BE PUSHED
+════════════════════════════════════════════════════════════════════════════
+
+Repository: billlzzz10/bl1nk-skill-mcp-server
+Branch:     main
+Files:      66 tracked (26 new/modified)
+
+Content:
+  ✅ 5 Code Fixes
+     - src/server.py
+     - src/api.py
+     - src/cli.py
+     - src/__init__.py
+     - src/__main__.py
+
+  ✅ 4 Docker Fixes
+     - docker/Dockerfile
+     - docker/docker-compose.yml
+     - .dockerignore
+     - docker/.env.example
+
+  ✅ 3 Automation Scripts
+     - scripts/release.sh
+     - scripts/docker-build.sh
+     - scripts/github-push.sh
+
+  ✅ 7 Documentation Files
+     - IMPROVEMENTS.md
+     - VERIFICATION_REPORT.md
+     - QUICKSTART.md
+     - FIX_INDEX.md
+     - DOCKER_GUIDE.md
+     - RELEASE_GUIDE.md
+     - DOCKER_AND_RELEASE_SUMMARY.md
+
+════════════════════════════════════════════════════════════════════════════
+🎯 RECOMMENDED STEPS
+════════════════════════════════════════════════════════════════════════════
+
+Step 1: Read
+  cat /home/user/PUSH_NOW.md
+
+Step 2: Get Token
+  https://github.com/settings/tokens
+  (Generate new token (classic))
+
+Step 3: Push (choose one method)
+  Method 1: ./scripts/github-push-interactive.sh
+  Method 2: git config + git push
+  Method 3: git push with embedded token
+
+Step 4: Verify
+  https://github.com/billlzzz10/bl1nk-skill-mcp-server
+
+Step 5: Create Release (optional)
+  ./scripts/release.sh 1.0.0
+
+════════════════════════════════════════════════════════════════════════════
+🆘 TROUBLESHOOTING
+════════════════════════════════════════════════════════════════════════════
+
+❌ "Permission denied"
+→ Token scope doesn't have 'repo'
+→ Create new token with correct scopes
+
+❌ "Invalid token"
+→ Check token is correct
+→ Token may be invalid or expired
+→ Create new token
+
+❌ "Authentication failed"
+→ Username should be: billlzzz10
+→ Password should be: YOUR_GITHUB_TOKEN (not password)
+
+❌ "Repository not found"
+→ Check URL is correct
+→ Check repository exists
+
+════════════════════════════════════════════════════════════════════════════
+📚 DOCUMENTATION
+════════════════════════════════════════════════════════════════════════════
+
+📖 PUSH_NOW.md
+   Complete guide with all methods
+
+📖 GITHUB_PUSH_GUIDE.md
+   Detailed instructions with examples
+
+📖 scripts/github-push-interactive.sh
+   Ready-to-use interactive script
+
+════════════════════════════════════════════════════════════════════════════
+✨ SUMMARY
+════════════════════════════════════════════════════════════════════════════
+
+You have 3 ways to push:
+  1️⃣  Interactive Script (easiest) ✅
+  2️⃣  Manual Git Push (standard) ✅
+  3️⃣  One-liner URL (quickest) ✅
+
+All methods work, choose what's comfortable for you!
+
+════════════════════════════════════════════════════════════════════════════
+
+Ready? Start with Method 1:
+
+  cd /home/user/mcp-servers/bl1nk-skill-mcp-server
+  ./scripts/github-push-interactive.sh
+
+🚀 Let's go!
+
+════════════════════════════════════════════════════════════════════════════

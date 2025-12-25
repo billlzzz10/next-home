@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "hello-world",
+      "name": "Hello World",
+      "description": "Simple greeting skill",
+      "version": "1.0.0",
+      "language": "python"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "description": "Format and validate JSON",
+      "version": "1.0.0",
+      "language": "python"
+    },
+    {
+      "id": "data-processor",
+      "name": "Data Processor",
+      "description": "Process data arrays",
+      "version": "1.0.0",
+      "language": "python"
+    },
+    {
+      "id": "bash-echo",
+      "name": "Bash Echo",
+      "description": "Echo text with bash",
+      "version": "1.0.0",
+      "language": "bash"
+    },
+    {
+      "id": "text-processor",
+      "name": "Text Processor",
+      "description": "Analyze and process text",
+      "version": "1.0.0",
+      "language": "python"
+    }
+  ]
+}

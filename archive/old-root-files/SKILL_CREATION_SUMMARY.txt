@@ -1,0 +1,300 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║              ✅ ARTICLE DATA EXTRACTOR SKILL - CREATION COMPLETE             ║
+║                                                                              ║
+║  A professional tool for extracting and organizing numerical data from      ║
+║  news articles, reports, and analytical content into structured Markdown    ║
+║  tables with complete context and categorization.                           ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+📍 SKILL LOCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ~/skills/custom/article-data-extractor/
+
+
+📦 WHAT YOU GOT (7 FILES)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CORE SKILL FILES:
+  ✓ SKILL.md (5.5 KB)
+    └─ Main skill definition with 6-step extraction workflow
+  
+  ✓ OVERVIEW.md (5.9 KB)
+    └─ Comprehensive guide with all documentation
+
+
+REFERENCE GUIDES (20 KB TOTAL):
+  ✓ references/quick-reference.md
+    └─ 1-page quick lookup with workflow, definitions, checklist
+  
+  ✓ references/extraction-patterns.md
+    └─ Data categories, complex scenario handling, quality checklist
+  
+  ✓ references/example-scenarios.md
+    └─ 5 real-world extraction examples:
+       • Economic report (GDP, employment, inflation)
+       • Technology earnings (Apple Q3 2023)
+       • Market research (AI industry growth)
+       • Healthcare/clinical trials (patient outcomes)
+       • Sports statistics (tournament data)
+
+
+TOOLS & TEMPLATES (12 KB TOTAL):
+  ✓ scripts/extract_data.py (Python)
+    └─ Automated pattern detection tool
+       • Identifies 10+ numerical data patterns
+       • Extracts numbers with context
+       • Exports to CSV for manual categorization
+       • Usage: python extract_data.py article.txt
+  
+  ✓ assets/extraction_template.md
+    └─ Reusable extraction template with:
+       • Article metadata section
+       • Extraction checklist
+       • Multiple data category tables
+       • Notes and observations area
+
+
+🎯 CORE FUNCTIONALITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: ANALYZE
+  Read and understand article content completely
+
+STEP 2: IDENTIFY  
+  Extract ALL numerical data (numbers, %, rates, metrics, rankings)
+
+STEP 3: EXTRACT CONTEXT
+  Capture: value, unit, entity, timeframe, source, notes
+
+STEP 4: CATEGORIZE
+  Organize into logical groups:
+  • Financial Performance    • Market Data          • Demographics
+  • Growth Metrics          • Operational Metrics  • Employment
+  • Pricing/Inflation       • Health Statistics    • Technology
+  • Education              • And more...
+
+STEP 5: GENERATE SUMMARY
+  Create overview with:
+  • Total data points extracted
+  • Main categories
+  • Data focus/theme
+
+STEP 6: OUTPUT
+  Produce Markdown tables with:
+  • Data Description | Value | Unit/% | Related Entity | Time Range | Notes
+
+
+📊 OUTPUT EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Data Summary
+- Total data points extracted: 6
+- Main categories: Financial Performance, Growth Metrics
+- Data focus: Apple Q3 2023 quarterly results
+
+### Financial Performance
+
+| Data Description | Value | Unit/% | Related Entity | Time Range | Additional Notes |
+|------------------|-------|--------|---|---|---|
+| Total revenue | 81.8 | Billion USD | Apple | Q3 2023 | Record quarter, up 4.3% YoY |
+| iPhone revenue | 42.6 | Billion USD | Apple | Q3 2023 | 52% of total revenue |
+| Services revenue | 16.9 | Billion USD | Apple | Q3 2023 | Up 16% YoY |
+
+
+💼 USE CASES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Financial Analysis          Extract earnings, growth rates, market metrics
+✓ Economic Research           GDP, inflation, employment, trade data
+✓ Market Intelligence         Market share, sizing, competitive data
+✓ Data Journalism             Convert articles to structured datasets
+✓ Business Intelligence       Create data summaries for presentations
+✓ Academic Research           Extract statistics from published work
+✓ Healthcare/Science          Clinical trials, medical statistics
+✓ Sports Analytics            Tournament stats, player performance
+
+
+🚀 QUICK START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. UNDERSTAND THE WORKFLOW
+   cd ~/skills/custom/article-data-extractor
+   cat SKILL.md
+
+2. LEARN QUICKLY (5 MINUTES)
+   cat references/quick-reference.md
+
+3. STUDY REAL EXAMPLES
+   cat references/example-scenarios.md
+
+4. EXTRACT YOUR FIRST ARTICLE
+   cp assets/extraction_template.md my_extraction.md
+   [Edit with your article data]
+
+5. USE THE AUTOMATION TOOL (OPTIONAL)
+   python scripts/extract_data.py article.txt
+   python scripts/extract_data.py article.txt --output results.csv
+
+
+📚 REFERENCE QUICK LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Need quick answers?              → references/quick-reference.md
+Handling complex data?           → references/extraction-patterns.md
+See real examples?               → references/example-scenarios.md
+Full workflow details?           → SKILL.md
+Want to start extracting?        → assets/extraction_template.md
+Auto-identify data patterns?     → scripts/extract_data.py
+Complete documentation?          → OVERVIEW.md
+
+
+✨ KEY FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Comprehensive      Extracts all numerical content with full context
+✓ Organized         Logically categorizes data for easy analysis
+✓ Contextual        Includes entities, timeframes, and sources
+✓ Accurate          Extraction limited to article content only
+✓ Reusable          Template and script support repeated workflows
+✓ Scalable          Works with single articles or batch datasets
+✓ Documented        5 example scenarios show real applications
+✓ Flexible          Handles economic, financial, tech, health, sports
+
+
+📂 COMPLETE DIRECTORY STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+~/skills/custom/article-data-extractor/
+│
+├── SKILL.md                           Main skill definition with workflow
+├── OVERVIEW.md                        Complete skill guide & documentation
+│
+├── scripts/
+│   └── extract_data.py                Automated pattern detection tool
+│
+├── references/
+│   ├── quick-reference.md             1-page quick lookup guide
+│   ├── extraction-patterns.md          Data categories & edge cases
+│   └── example-scenarios.md            5 real-world extraction examples
+│
+└── assets/
+    └── extraction_template.md          Reusable extraction template
+
+
+🎓 DATA EXTRACTION WORKFLOW (6 STEPS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+     1. ANALYZE              2. IDENTIFY            3. EXTRACT CONTEXT
+    ┌──────────┐           ┌──────────┐           ┌──────────────┐
+    │ Read &   │─────────→ │ Find All │─────────→ │ Capture:     │
+    │Understand│           │ Numbers  │           │• Value       │
+    │ Article  │           │ & Stats  │           │• Unit        │
+    └──────────┘           └──────────┘           │• Entity      │
+                                                   │• Timeframe   │
+                                                   │• Source      │
+                                                   │• Notes       │
+                                                   └──────────────┘
+                                                           │
+     6. OUTPUT              5. SUMMARIZE          4. CATEGORIZE
+    ┌──────────┐           ┌──────────┐           ┌──────────┐
+    │ Markdown │←─────────│• Total   │←─────────│ Organize │
+    │ Tables   │           │ Points   │           │ into     │
+    │+ Summary │           │• Categories          │ Groups   │
+    └──────────┘           │• Focus   │           └──────────┘
+                           └──────────┘
+
+
+💡 COMMON QUESTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q: How do I start extracting?
+A: Read quick-reference.md (5 min) then use the extraction_template.md
+
+Q: Can I automate data point detection?
+A: Yes! Run: python scripts/extract_data.py article.txt
+
+Q: What if I'm new to data extraction?
+A: Review the 5 examples in references/example-scenarios.md
+
+Q: How do I handle complex numbers?
+A: See references/extraction-patterns.md for handling guides
+
+Q: What if data doesn't fit a category?
+A: Create a new category that makes sense in context
+
+Q: Should I add external data?
+A: No! Extract only from the article provided
+
+
+🎯 SUCCESS CRITERIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ All numerical data extracted from article
+✓ Full context captured for each data point
+✓ Data organized into logical categories
+✓ Markdown tables properly formatted
+✓ Data summary included
+✓ No duplicate data points
+✓ Only article content used (no external data)
+✓ Timeframes are precise (not "recently")
+
+
+🔧 PYTHON SCRIPT USAGE EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Basic analysis:
+  python ~/skills/custom/article-data-extractor/scripts/extract_data.py article.txt
+
+Export to CSV for categorization:
+  python ~/skills/custom/article-data-extractor/scripts/extract_data.py \
+    article.txt --output results.csv
+
+Analyze text directly:
+  python ~/skills/custom/article-data-extractor/scripts/extract_data.py \
+    --text "Apple grew 15% last year with $81.8B revenue"
+
+Output: Pattern summaries + contextual data points
+
+
+📈 DATA CATEGORIES SUPPORTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Financial Performance      Market Data           Demographics
+• Revenue                 • Market share         • Population
+• Profit/Loss            • Market size          • Age distribution
+• Margins                • Competitor ranks     • Income levels
+• Returns                • Customer numbers     • Education
+
+Growth Metrics           Operational           Health/Science
+• Growth rates           • Production          • Medical stats
+• Increases/decreases    • Efficiency          • Clinical trials
+• Percentages            • Utilization         • Patient outcomes
+• Comparisons            • Productivity        • Treatment results
+
+Employment               Pricing/Inflation     Technology
+• Job creation           • CPI                 • Usage metrics
+• Unemployment           • PPI                 • Adoption rates
+• Wages                  • Exchange rates      • Performance specs
+• Labor metrics          • Commodity prices    • User numbers
+
+Education & More
+• Enrollment rates       • Rankings
+• Completion rates       • Industry-specific
+• Test scores            • Time-series data
+
+
+✅ SKILL READY FOR PRODUCTION USE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The article-data-extractor skill is fully configured, documented, and 
+ready to help you extract structured data from articles with professional
+quality and comprehensive context.
+
+All files are tested and operational. Start with quick-reference.md!
+
+
+╚══════════════════════════════════════════════════════════════════════════════╝

@@ -1,0 +1,44 @@
+{
+  "name": "voyage-mcp-server",
+  "version": "1.1.0",
+  "description": "MCP Server for Voyage AI Vector Search with Cost Optimization",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "test": "jest",
+    "clean": "rm -rf dist/ user_logs/",
+    "format": "prettier --write src/",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@qdrant/js-client-rest": "^1.8.0",
+    "@modelcontextprotocol/sdk": "^0.7.0",
+    "js-yaml": "^4.1.0",
+    "mkdirp": "^3.0.1",
+    "zod": "^3.22.4",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "prettier": "^3.1.0",
+    "eslint": "^8.55.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "voyage-ai",
+    "vector-search",
+    "qdrant",
+    "cost-optimization"
+  ],
+  "author": "Your Team",
+  "license": "MIT"
+}

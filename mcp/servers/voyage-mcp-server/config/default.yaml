@@ -1,0 +1,51 @@
+qdrant:
+  url: http://localhost:6333
+  apiKey: null
+  collectionName: mcp-knowledge-base
+  vectorSize: 1024
+  recreateCollection: false
+
+providers:
+  primary: voyage
+  voyage:
+    apiKey: ${VOYAGE_API_KEY:-}
+    embeddingModel: voyage-large-2
+    rerankModel: voyage-rerank-lite-1
+  mistral:
+    apiKey: ${MISTRAL_API_KEY:-}
+    embeddingModel: mistral-embed
+
+logging:
+  enabled: true
+  baseLogDir: user_logs
+  rotateDays: 30
+  logSearchQueries: true
+  logCostEstimates: true
+
+cost:
+  threshold: 0.05
+  embeddingCostPerMillion:
+    voyage: 0.10
+    mistral: 0.15
+  rerankCostPerThousand:
+    voyage: 1.00
+    mistral: 0.80
+
+search:
+  topK: 5
+  scoreThreshold: 0.82
+  batchSize: 10
+  useRerank: true
+  minTokensForRerank: 100
+
+filters:
+  default:
+    minScore: 0.7
+    maxAgeDays: 365
+    requiredTags: []
+  payload: {}
+
+system:
+  userIdHeader: X-User-ID
+  enableCostEstimation: true
+  autoSaveNewQAPairs: true

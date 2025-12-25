@@ -1,0 +1,213 @@
+{
+  "name": "voyage-mcp-server",
+  "version": "1.1.0",
+  "description": "MCP Server for Voyage AI Vector Search with Cost Optimization - Search documents without hitting LLM every time",
+  "author": "Your Team",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/voyage-mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/voyage-mcp-server.git"
+  },
+  "keywords": [
+    "mcp",
+    "voyage-ai",
+    "vector-search",
+    "qdrant",
+    "cost-optimization",
+    "embedding",
+    "search",
+    "langchain"
+  ],
+  "tools": [
+    {
+      "name": "search_documents",
+      "description": "Search for documents in the vector database. Returns relevant documents or recommends using LLM if no good matches found.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query"
+          },
+          "topK": {
+            "type": "number",
+            "description": "Number of results to return (default: 5)",
+            "default": 5
+          },
+          "scoreThreshold": {
+            "type": "number",
+            "description": "Minimum similarity score (default: 0.82)",
+            "default": 0.82
+          },
+          "useRerank": {
+            "type": "boolean",
+            "description": "Use AI reranking (default: true)",
+            "default": true
+          },
+          "estimateOnly": {
+            "type": "boolean",
+            "description": "Only estimate cost without searching",
+            "default": false
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "estimate_cost",
+      "description": "Estimate the cost of a search operation before executing",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to estimate cost for"
+          },
+          "useRerank": {
+            "type": "boolean",
+            "description": "Include rerank cost (default: true)",
+            "default": true
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "get_config",
+      "description": "Get current server configuration",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "update_config",
+      "description": "Update server configuration (embedding provider, Qdrant URL, cost thresholds, etc.)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "updates": {
+            "type": "object",
+            "description": "Configuration updates to apply"
+          }
+        },
+        "required": ["updates"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "document_search",
+      "description": "Search and retrieve documents from vector database with cost optimization",
+      "mimeType": "application/json"
+    }
+  ],
+  "metadata": {
+    "runtime": "node18+",
+    "capabilities": {
+      "vector_search": true,
+      "embedding_generation": true,
+      "document_reranking": true,
+      "cost_estimation": true,
+      "multi_provider": true,
+      "advanced_filtering": true,
+      "user_logging": true
+    },
+    "providers": {
+      "supported": ["voyage", "mistral"],
+      "default": "voyage"
+    },
+    "vector_database": {
+      "type": "qdrant",
+      "supported_versions": ["1.0+"]
+    },
+    "cost_optimization": {
+      "typical_savings": "80-95% vs always using LLM",
+      "features": [
+        "Cost estimation before operations",
+        "Embedding caching",
+        "Batch processing",
+        "Smart LLM handoff detection"
+      ]
+    }
+  },
+  "installation": {
+    "type": "npm",
+    "steps": [
+      "npm install",
+      "npm run build",
+      "Set VOYAGE_API_KEY or MISTRAL_API_KEY",
+      "Configure config/default.yaml",
+      "npm start"
+    ]
+  },
+  "environment_variables": [
+    {
+      "name": "VOYAGE_API_KEY",
+      "description": "API key for Voyage AI",
+      "required": false,
+      "default": null
+    },
+    {
+      "name": "MISTRAL_API_KEY",
+      "description": "API key for Mistral AI",
+      "required": false,
+      "default": null
+    },
+    {
+      "name": "QDRANT_URL",
+      "description": "Qdrant server URL",
+      "required": false,
+      "default": "http://localhost:6333"
+    }
+  ],
+  "example_usage": {
+    "estimate_cost": {
+      "description": "Check cost before searching",
+      "request": {
+        "tool": "estimate_cost",
+        "args": {
+          "query": "How to use Next.js 14 App Router",
+          "useRerank": true
+        }
+      },
+      "response": {
+        "embeddingTokens": 8,
+        "embeddingCost": "0.000001",
+        "rerankCost": "0.000100",
+        "totalCost": "0.000101",
+        "provider": "voyage"
+      }
+    },
+    "search_documents": {
+      "description": "Search for relevant documents",
+      "request": {
+        "tool": "search_documents",
+        "args": {
+          "query": "Next.js 14 App Router",
+          "topK": 3,
+          "useRerank": true
+        }
+      },
+      "response": {
+        "shouldUseLLM": false,
+        "results": [
+          {
+            "id": "doc_001",
+            "score": 0.92,
+            "content": "In Next.js 14 App Router...",
+            "metadata": {}
+          }
+        ],
+        "costEstimate": "0.000150",
+        "provider": "voyage"
+      }
+    }
+  },
+  "compatibility": {
+    "mcp_version": ">=0.7.0",
+    "node_version": ">=18.0.0",
+    "typescript": ">=5.0.0"
+  }
+}
