@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bl1nk-architect"
+version = "0.1.0"
+description = "Full-stack Poe bot for GitHub repository architecture analysis using Gemini Deep Research"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Bl1nk Team"}]
+requires-python = ">=3.11"
+
+dependencies = [
+    "fastapi-poe>=0.0.34",
+    "modal>=0.60.0",
+    "google-genai>=0.1.0",
+    "PyGithub>=2.0.0",
+    "requests>=2.31.0",
+    "pyjwt>=2.8.0",
+    "cryptography>=41.0.0",
+    "jinja2>=3.1.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "W", "I", "C", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

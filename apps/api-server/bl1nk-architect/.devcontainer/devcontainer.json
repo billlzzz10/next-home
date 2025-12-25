@@ -1,0 +1,40 @@
+{
+  "name": "Bl1nk Architect",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [8000, 8501, 5000],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "GitHub.copilot",
+        "docker",
+        "markdownlint",
+        "REST Client",
+        "Thunder Client"
+      ],
+      "settings": {
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+        "python.linting.pylintPath": "${workspaceFolder}/venv/bin/pylint",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.python"
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,readonly"
+  ]
+}

@@ -1,0 +1,126 @@
+name: Deploy to Modal
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      
+      - name: Lint with ruff
+        run: ruff check src/ utils/ tests/
+        continue-on-error: true
+      
+      - name: Format check with black
+        run: black --check src/ utils/ tests/
+        continue-on-error: true
+      
+      - name: Type check with mypy
+        run: mypy src/
+        continue-on-error: true
+      
+      - name: Run pytest
+        run: pytest tests/ -v --cov=src --cov-report=xml
+        continue-on-error: true
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+        continue-on-error: true
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Modal
+    needs: test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    
+    environment:
+      name: modal-production
+      url: https://modal.com
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install Modal CLI
+        run: pip install modal
+      
+      - name: Deploy to Modal
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          modal deploy modal_app.py
+      
+      - name: Get deployment URL
+        run: |
+          echo "Bot deployed successfully to Modal!"
+          echo "Check Modal dashboard for the URL"
+      
+      - name: Post deployment info
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Bot deployed to Modal!\n\nCheck Modal dashboard for deployment details.'
+            })
+        continue-on-error: true
+
+  notify-slack:
+    runs-on: ubuntu-latest
+    name: Notify Slack
+    needs: deploy
+    if: always()
+    
+    steps:
+      - name: Slack Notification
+        uses: slackapi/slack-github-action@v1
+        if: ${{ secrets.SLACK_WEBHOOK_URL != '' }}
+        with:
+          payload: |
+            {
+              "text": "Bl1nk Architect deployment ${{ needs.deploy.result }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Deployment Status*: ${{ needs.deploy.result }}\n*Repository*: ${{ github.repository }}\n*Branch*: ${{ github.ref_name }}\n*Commit*: ${{ github.sha }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true

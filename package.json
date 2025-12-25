@@ -1,0 +1,39 @@
+{
+  "name": "bl1nk-monorepo",
+  "version": "1.0.0",
+  "description": "BL1NK - AI-powered skill-based automation platform",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "skills/phase-*/*",
+      "mcp/servers/*"
+    ]
+  },
+  "scripts": {
+    "setup": "make setup",
+    "install": "pnpm install",
+    "dev": "make dev",
+    "build": "make build",
+    "test": "make test",
+    "lint": "make lint",
+    "format": "make format",
+    "validate": "make validate",
+    "new-skill": "make new-skill",
+    "list-skills": "make list-skills",
+    "deploy": "make deploy",
+    "clean": "make clean"
+  },
+  "keywords": [
+    "ai",
+    "automation",
+    "skills",
+    "modular",
+    "monorepo"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Main application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bl1nk-architect
+    ports:
+      - "8000:8000"
+    environment:
+      - POE_ACCESS_KEY=${POE_ACCESS_KEY}
+      - GITHUB_APP_ID=${GITHUB_APP_ID}
+      - GITHUB_PRIVATE_KEY=${GITHUB_PRIVATE_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - LINEAR_API_KEY=${LINEAR_API_KEY}
+      - CLICKUP_API_KEY=${CLICKUP_API_KEY}
+    volumes:
+      - ./skills:/home/user/skills
+      - ./logs:/app/logs
+      - ./data:/app/data
+    networks:
+      - bl1nk-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - monitor
+
+  # Monitoring dashboard
+  monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: bl1nk-monitor
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./dashboard.py:/app/dashboard.py
+      - ./src:/app/src
+      - ./logs:/app/logs
+    networks:
+      - bl1nk-network
+    command: streamlit run dashboard.py --server.port=8501 --server.address=0.0.0.0
+
+networks:
+  bl1nk-network:
+    driver: bridge

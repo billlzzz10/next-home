@@ -1,0 +1,2 @@
+"""Bot tests"""
+import pytest

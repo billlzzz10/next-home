@@ -1,0 +1,2 @@
+"""Auth tests"""
+import pytest
