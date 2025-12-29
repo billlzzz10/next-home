@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bl1nk-skill-mcp-server"
+version = "1.0.0"
+description = "BL1NK Skill MCP Server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi-poe>=0.0.34",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
